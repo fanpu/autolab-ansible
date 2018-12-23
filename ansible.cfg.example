@@ -1,0 +1,9 @@
+[defaults]
+inventory = hosts
+private_key_file = ~/.ssh/id_rsa
+remote_user = root
+nocows = 1
+
+[ssh_connection]
+ssh_args = -o ControlMaster=auto -o ControlPersist=60s -o ForwardAgent=yes
+
