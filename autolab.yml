@@ -1,0 +1,17 @@
+#!/usr/bin/env ansible-playbook
+---
+- name: Deploy Autolab
+  hosts: web
+  vars:
+    repo_url: https://github.com/autolab/Autolab.git
+    locale: en_US.UTF-8
+    tls_enabled: True
+  # vars_files:
+  #   - secrets.yml
+  roles:
+    - role: geerlingguy.docker
+  tasks:
+    - name: Download Autolab source
+      git:
+        repo: 'https://github.com/autolab/Autolab.git'
+        dest: ~
