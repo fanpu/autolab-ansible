@@ -14,4 +14,4 @@
     - name: Download Autolab source
       git:
         repo: 'https://github.com/autolab/Autolab.git'
-        dest: ~
+        dest: autolab
