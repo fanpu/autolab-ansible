@@ -8,10 +8,41 @@
     tls_enabled: True
   # vars_files:
   #   - secrets.yml
-  roles:
-    - role: geerlingguy.docker
+  # roles:
+  #   - role: geerlingguy.docker
   tasks:
     - name: Download Autolab source
       git:
         repo: 'https://github.com/autolab/Autolab.git'
-        dest: autolab
+        dest: Autolab
+        clone: no
+        update: no
+    - name: Copy Dockerfile
+      copy:
+        src: cover/Dockerfile
+        dest: Autolab/Dockerfile
+    - name: Copy autolab.rake
+      copy:
+        src: cover/autolab.rake
+        dest: Autolab/lib/tasks/autolab.rake
+    - name: Copy autogradeConfig.rb
+      copy:
+        src: configs/autogradeConfig.rb
+        dest: Autolab/config/autogradeConfig.rb
+    - name: Copy devise.rb
+      copy:
+        src: configs/devise.rb
+        dest: Autolab/config/initializers/devise.rb
+    - name: Copy nginx.conf
+      copy:
+        src: configs/nginx.conf
+        dest: Autolab/docker/nginx.conf
+    - name: Copy production.rb
+      copy:
+        src: configs/production.rb
+        dest: Autolab/config/environments/production.rb
+    - name: Copy production.rb
+      copy:
+        src: configs/school.yml
+        dest: Autolab/config/school.yml
+
